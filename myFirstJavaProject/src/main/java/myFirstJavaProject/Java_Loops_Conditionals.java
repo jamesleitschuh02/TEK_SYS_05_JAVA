@@ -35,22 +35,22 @@ public class Java_Loops_Conditionals {
 			System.out.println("Not in range");
 		}
 		
-		Scanner userInput = new Scanner(System.in);
-		
-		System.out.println("Hi, what is your name? ");
-		String firstName = userInput.nextLine();
-		
-		System.out.println("What is your age? ");
-		int userAge = userInput.nextInt();
-		
-		if(userAge > 17) {
-			System.out.println("You may pass");
-		}
-		else {
-			System.out.println("You shall not pass, " + firstName);
-		}
-		
-		userInput.close();
+//		Scanner userInput = new Scanner(System.in);
+//		
+//		System.out.println("Hi, what is your name? ");
+//		String firstName = userInput.nextLine();
+//		
+//		System.out.println("What is your age? ");
+//		int userAge = userInput.nextInt();
+//		
+//		if(userAge > 17) {
+//			System.out.println("You may pass");
+//		}
+//		else {
+//			System.out.println("You shall not pass, " + firstName);
+//		}
+//		
+//		userInput.close();
 		
 		
 		// Switch Statements
@@ -106,6 +106,32 @@ public class Java_Loops_Conditionals {
 		for (int count2 = 0; count2 < 10; count2++) {
 			System.out.println(count2 + " count");
 		}
+		
+		String[] myStr = new String[10];
+		myStr[0] = "James";
+		
+		System.out.println(myStr[0]);
+		
+
+		// Enhanced for-loop - look up
+		
+		
+		double[] arr = new double[5];
+		for(int p = 0; p < 5; p++) {
+			arr[p] = Math.floor(Math.random()*10);
+			System.out.println(arr[p]);
+		}
+		
+		int[] numbers = {3,4,5,-5,0,12};
+		
+		int sum=0;
+		
+		for (int p = 0; p < numbers.length; p++) {
+			sum = sum + numbers[p];
+		}
+		
+		System.out.println(sum);
+		
 
 	} 
 
