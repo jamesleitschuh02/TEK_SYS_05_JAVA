@@ -3,9 +3,11 @@ package main;
 public class Employee {
 	// java oop slides 14
 
-		// fields
+		
 		// encapsulation slide 3
 		// inheritance 27
+	
+		// Fields
 		private String firstname;
 		private String lastName;
 		private long emp_id;
