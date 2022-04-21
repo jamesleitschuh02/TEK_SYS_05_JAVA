@@ -1,6 +1,6 @@
 package main;
 
-public class Employee {
+public class Employee extends AbstractAccountActions{
 	// java oop slides 14
 
 		
@@ -12,6 +12,7 @@ public class Employee {
 		private String lastName;
 		private long emp_id;
 		private String jobTitle;
+		private float totalAmount; 
 		
 		// default constructor
 		public Employee() {}
@@ -69,4 +70,17 @@ public class Employee {
 					+ emp_id + ", jobTitle="
 					+ jobTitle + "]";
 		}
+		
+		@Override
+		float withdraw(int amount, int withdrawAmount) {
+			totalAmount = amount - withdrawAmount;
+					return totalAmount;
+		}
+
+		@Override
+		float deposit(int amount, int depositAmount) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
 }
