@@ -79,7 +79,6 @@ public class main {
 		
 		x = 7;
 		int y = 17;
-		int z;
 		
 		// 6
 		

@@ -24,6 +24,6 @@ public class Main {
 		// We have a problem!
 		Monster m4 = new Monster("normalMonster");
 		System.out.println(m4.attack());
-	}
-
+		}
+		
 }

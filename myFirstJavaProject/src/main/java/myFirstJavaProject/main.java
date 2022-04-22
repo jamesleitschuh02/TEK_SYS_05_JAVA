@@ -56,6 +56,6 @@ public class main {
 		
 		//Close Scanner
 		userInput.close();
-	}
 
+}
 }
