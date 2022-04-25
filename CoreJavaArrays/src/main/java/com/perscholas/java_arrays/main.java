@@ -17,6 +17,7 @@ public class main {
 		// 2
 		
 		int[] arr2 = {13,5,7,68,2};
+		System.out.println(arr2[2]);
 		
 		// 3
 		
@@ -90,10 +91,15 @@ public class main {
 		// 10 
 		// Create an array that includes an integer, 3 strings, and 1 double. Print the array.
 		
-		
-		
-		
+		Object[] types = new Object[5];
+		types[0] = 3;
+		types[1] = "string";
+		types[2] = "james";
+		types[3] = "words";
+		types[4] = 2.5;
+		for (int i = 0; i < 5; i++) {
+			System.out.println(types[i]);
+		}
+	}
 
-	} //
-
-} //
+}
