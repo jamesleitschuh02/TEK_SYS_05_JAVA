@@ -1,4 +1,7 @@
-package main.java.doorsAndLocks;
+package DoorsAndLocks;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Warehouse {
     private Set<Door> doors = new TreeSet<Door>();
@@ -39,4 +42,5 @@ public class Warehouse {
 
         }
     }
+
 }

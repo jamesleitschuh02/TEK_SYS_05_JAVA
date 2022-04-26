@@ -1,9 +1,8 @@
-package doorsAndLocks;
+package DoorsAndLocks;
 
 import java.util.UUID;
 
 public class Key implements Cloneable, Comparable<Key> {
-
     //default constructor
     public UUID key = UUID.randomUUID();
     private Keyshape shape = Keyshape.Unknown;

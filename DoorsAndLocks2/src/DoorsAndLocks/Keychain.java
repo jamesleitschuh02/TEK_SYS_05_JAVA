@@ -1,11 +1,20 @@
-package main.java.doorsAndLocks;
+package DoorsAndLocks;
+
+//import java.util.ArrayList;
+//import java.util.Collection;
+//import java.util.Set;
+//import java.util.TreeSet;
+
+import java.util.*;
 
 public class Keychain {
-    private Set<Key> keys = new TreeSet<Key>();
+//    private Set<Key> keys = new TreeSet<Key>();
+    
+    private HashMap<Keyshape, ArrayList<Key>> keys = new HashMap<Keyshape,ArrayList<Key>>();
 
-    private Keychain() {}
+    public Keychain() {}
 
-    public Keychain(collection<Key> keys) {
+    public Keychain(Collection<Key> keys) {
         for (Key k: keys) {
             addKey(k);
         }
@@ -50,6 +59,7 @@ public class Keychain {
         }
         return false;
     }
+
 
 
 }

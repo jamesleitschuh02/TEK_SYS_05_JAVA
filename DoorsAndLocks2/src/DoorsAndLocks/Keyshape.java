@@ -1,6 +1,7 @@
-package main.java.doorsAndLocks;
+package DoorsAndLocks;
 
 public enum Keyshape {
+    
     Square,
     Rectangular,
     Circular,
@@ -9,4 +10,5 @@ public enum Keyshape {
     TrapezoidDown,
     Irregular,
     Unknown
+
 }

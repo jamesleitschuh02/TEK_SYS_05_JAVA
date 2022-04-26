@@ -1,9 +1,10 @@
-package main.java.doorsAndLocks;
+package DoorsAndLocks;
 
 public class Door {
     private Key key;
     private boolean isLocked;
-    public door(Key key) {
+    
+    public Door(Key key) {
         this.key = key;
         isLocked = key != null;
     }
@@ -33,4 +34,5 @@ public class Door {
         }
         return !isLocked;
     }
+
 }
