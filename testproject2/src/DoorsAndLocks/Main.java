@@ -1,5 +1,5 @@
-package testing;
-public class App {
+package DoorsAndLocks;
+public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
     }
