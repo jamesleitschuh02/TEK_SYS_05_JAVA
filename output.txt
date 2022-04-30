@@ -1,0 +1,7 @@
+copy
+in
+file
+my
+name
+is
+james

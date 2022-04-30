@@ -34,30 +34,34 @@ public class ListAndArray {
     //          }
     //      System.out.println(moves);
 
-        LinkedList<Integer> myLinkedList = new LinkedList<>();
-        myLinkedList.add(34);
-        myLinkedList.add(24);
-        // myLinkedList.add(3,14);
-        myLinkedList.get(1);
+        // LinkedList<Integer> myLinkedList = new LinkedList<>();
+        // myLinkedList.add(34);
+        // myLinkedList.add(24);
+        // // myLinkedList.add(3,14);
+        // myLinkedList.get(1);
 
-        EnumMap<DayOfWeek, Integer> map = new EnumMap<>(DayOfWeek.class);
-        map.put(DayOfWeek.FRIDAY, 23);
+        // EnumMap<DayOfWeek, Integer> map = new EnumMap<>(DayOfWeek.class);
+        // map.put(DayOfWeek.FRIDAY, 23);
 
-        HashMap<Integer, Integer> cars = new HashMap<>();
-        cars.containsValue(cars);
-        cars.containsKey(cars);
+        // HashMap<Integer, Integer> cars = new HashMap<>();
+        // cars.containsValue(cars);
+        // cars.containsKey(cars);
 
-        HashSet<String> setHashList = new HashSet<>();
-        setHashList.add("one");
-        setHashList.add("two");
-        setHashList.add("three");
-        setHashList.add("four");
-        setHashList.add("five");
+        // HashSet<String> setHashList = new HashSet<>();
+        // setHashList.add("one");
+        // setHashList.add("two");
+        // setHashList.add("three");
+        // setHashList.add("four");
+        // setHashList.add("five");
 
-        Iterator<String> itr = setHashList.iterator();
+        // Iterator<String> itr = setHashList.iterator();
 
-        while(itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-    }
+        // while(itr.hasNext()) {
+        //     System.out.println(itr.next());
+        // }
+
+        int a = 7;
+        int b = 2;
+        System.out.println(a/b);
+    }    
 }
