@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>New/Update Task</title>
+
+<link rel="stylesheet" href="../static/css/new-update-task.css" th:href="@{/css/new-update-task.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<div class="container-fluid" id="wrapper">
+<h1 id="title" th:text="${newTask} ? 'CREATE NEW TASK' : 'UPDATE TASK'"></h1>
+
+<a id="previous" th:href="@{/main/task}">back</a><br>
+
+<form 
+	id="taskForm" 
+	action="#" 
+	th:action="${newTask} ? '/task/create' : '/task/saveUpdates/'"
+	autocomplete="off"
+	method="POST">
+
+	<label for="name">task name:</label><br>
+	<input type="text" 
+		   id = "form-name"
+		   th:field = "*{task.taskName}"
+	 	   placeholder="task name">
+	<br>
+	 
+	<input type="hidden" 
+		   th:field = "*{task.completed}" 
+	       placeholder="content">
+	
+	<input th:if="${!newTask}" type="hidden" 
+		   th:field = "*{task.taskId}" 
+		   placeholder="task id">
+	
+	<button id="btn" class="border border-dark rounded" th:if="${newTask}" type="submit">Save Task</button>
+	<button id="btn" class="border border-dark rounded" th:if="${!newTask}" type="submit">Update Task</button>
+	
+
+</form>
+
+
+
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

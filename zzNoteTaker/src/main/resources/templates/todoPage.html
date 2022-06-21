@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../static/css/todo.css" th:href="@{/css/todo.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+</head>
+
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+
+
+
+<div class="container-fluid" id="wrapper">
+<h1 id="title">Daily Tasks</h1>
+
+<a id="newNoteLink" th:href="@{/task/create/}">Create New Task</a><br><br>
+<h4>Active Tasks</h4>
+<div id="task-list">
+<table class="table table-hover table-sm overflow-y: hidden">
+	<tr class="table-secondary" th:each="task : ${taskList}">
+		<td th:if="${!task.completed}" th:text="${task.taskName}" />
+		<td th:if="${!task.completed}"><a th:href="@{/task/changeComplete/{id}(id=${task.taskId})}">Complete</a></td>
+		<td th:if="${!task.completed}"><a style="color:blue" th:href="@{/task/update/{id}(id=${task.taskId})}">Update</a></td>
+		<td th:if="${!task.completed}"><a style="color:red" th:href="@{/task/delete/{id}(id=${task.taskId})}">Delete</a></td>		
+
+	</tr>
+</table>
+</div>
+
+<h4>Completed Tasks</h4>
+<table class="table table-hover table-sm overflow-y: hidden">
+	<tr class="table-secondary" th:each="task : ${taskList}">
+		<td th:if="${task.completed}" th:text="${task.taskName}" />
+		<td th:if="${task.completed}"><a th:href="@{/task/changeComplete/{id}(id=${task.taskId})}">Complete</a></td>
+		<td th:if="${task.completed}"><a style="color:red" th:href="@{/task/delete/{id}(id=${task.taskId})}">Delete</a></td>		
+
+	</tr>
+</table>
+
+
+</div>
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

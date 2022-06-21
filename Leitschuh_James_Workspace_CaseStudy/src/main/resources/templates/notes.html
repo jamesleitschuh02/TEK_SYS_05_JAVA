@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Notes</title>
+
+<link rel="stylesheet" href="../static/css/notes.css" th:href="@{/css/notes.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+<script type="text/javascript" th:src = "@{/js/notes.js}"></script>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<div th:if="${notesList.size == 0}" class="container-fluid" id="wrapper">
+	<h1 id="title">Notes Page</h1>
+	<a id="newNoteLink" th:href="@{/notes/create}">Create New Note</a><br>
+	<h3>Currently no notes</h3>
+</div>
+
+
+ <div th:if="${notesList.size != 0}" class="container-fluid" id="wrapper">
+<h1 id="title">Notes Page</h1>
+<a id="newNoteLink" th:href="@{/notes/create}">Create New Note</a><br>
+<div id="container">
+
+<div th:if="${notesList.size != 0}" id="buttons" class="row">
+
+	<div class="col-6"></div>
+
+	<div class="col-3">
+		<button 
+			class="btn-success border border-dark rounded"
+			id="update-btn" 
+			th:data-id=${notesList.get(0).getId} 
+			th:onclick="|update()|">
+			Save Updates
+		</button>
+	</div>	
+	
+	<div class="col-3">
+		<button 
+			class=" btn-danger border border-dark rounded"
+			id="delete-btn" 
+			th:data-id=${notesList.get(0).getId} 
+			th:onclick="|deleteNote()|">
+			Delete
+		</button>
+	</div>
+</div>
+
+    <div class="row">
+      <div class="col-4 list-container" id="notes-list">       
+        <div class="card">
+        	<ul class="list-group" >
+        		<li 
+        			th:each="note : ${notesList}"
+        			th:onclick="upload([[${note.id}]],[[${note.noteName}]],[[${note.noteContent}]] );"
+        			th:text="${note.noteName}" 
+        			class="list-group-item" 
+        			th:id="${note.Id}">
+        		</li>
+        	</ul>
+        </div>      
+      </div>
+      <div class="col-8" id="note-content-list">
+      	
+        <input 
+        	class="note-title" 
+        	id="note-title" 
+        	placeholder="Note Title" 
+        	th:value="${notesList.get(0).getNoteName}"
+        	maxlength="28" 
+        	type="text">
+        
+        <textarea 
+        	class="note-textarea" 
+        	id="note-text" 
+        	th:text="${notesList.get(0).getNoteContent}"
+        	placeholder="Note Text">
+        </textarea>
+               
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

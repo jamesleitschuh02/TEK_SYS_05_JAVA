@@ -1,0 +1,54 @@
+body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: #EFFFFD;
+}
+
+.wrapper {
+    margin: 5px;
+    /* background: linear-gradient(skyblue, darkblue); */
+}
+
+h1,h2 {
+    text-align: center;
+    font-family: 'Fredoka One';
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    background-image: url('https://img4.goodfon.com/wallpaper/nbig/8/68/art-pxl-8bit-grafika-more-nebo-oblaka-pikseli.jpg');
+    background-size: cover;
+    background-position: 350px;
+}
+
+#city {
+    border-radius: 15px;
+    border-width: 1px;
+    position: relative;
+    top: -25px
+}
+
+#cityBtn {
+    border-radius: 15px;
+    margin-top: 5px;
+    border-width: 1px;
+}
+
+#cityBtn:hover {
+    background-color: rgb(215, 210, 210);
+    transition: 0.8s;
+}
+
+.tableBody {
+    background-color: white;
+    border-left: solid;
+    border-right: solid;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+.listItem:hover{
+   cursor: pointer; 
+}

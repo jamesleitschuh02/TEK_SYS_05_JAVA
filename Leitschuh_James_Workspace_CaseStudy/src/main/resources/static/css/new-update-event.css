@@ -1,0 +1,24 @@
+#title{
+	text-align: center;
+}
+
+#eventForm{
+	text-align: center;
+}
+
+#form-name, #form-id {
+	outline: none;
+	margin-top: 15px;
+	width: 400px;
+}
+
+#btn{
+	margin-top: 15px;
+}
+
+#wrapper{
+	padding-bottom: 180px;
+	background-color: #F8F8FF;
+	box-shadow: 0px 5px 15px 1px rgba(59, 48, 48, 0.47);
+	width: 98%;
+}

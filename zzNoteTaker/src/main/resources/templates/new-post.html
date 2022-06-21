@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>New Post</title>
+
+<link rel="stylesheet" href="../static/css/new-post.css" th:href="@{/css/new-post.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+
+
+<form 
+	id="postForm" 
+	action="#" 
+	th:action="@{/posts/create}" 
+	autocomplete="off"
+	method="POST">
+
+	<label for="post-_name">issue:</label><br>
+	<input type="text"
+		   id="post_name" 
+		   th:field = "*{post.postName}"
+	 	   placeholder="issue">
+	<br>
+	 
+	<label for="post_description">description:</label><br>
+	<textarea type="text"
+		   id="post_description"
+		   th:field = "*{post.postDesc}" 
+	       placeholder="description">
+	</textarea><br>
+	
+	<button class="border border-dark rounded" type="submit">Add Post</button>
+	
+
+</form>
+
+</body>
+</html>

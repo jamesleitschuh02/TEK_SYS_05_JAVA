@@ -21,7 +21,8 @@ public class main {
 		StringBuffer responseContent = new StringBuffer();
 		
 		try {
-			URL url = new URL("https://jsonplaceholder.typicode.com/albums");
+//			URL url = new URL("https://jsonplaceholder.typicode.com/albums");
+			URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q=plymouth&appid=bf0a61546d9083e91b1a07813951c139&units=imperial");
 			connection = (HttpURLConnection) url.openConnection();
 			
 			// Request Setup

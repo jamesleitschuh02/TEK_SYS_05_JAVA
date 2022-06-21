@@ -1,0 +1,94 @@
+body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background-color: #EFFFFD;
+}
+
+.wrapper {
+    margin: 5px;
+}
+
+h1, h2, h4 {
+    font-family: 'Fredoka One';
+}
+
+dt {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    background-image: url('https://img4.goodfon.com/wallpaper/nbig/8/68/art-pxl-8bit-grafika-more-nebo-oblaka-pikseli.jpg');
+    background-size: cover;
+    background-position: 350px;
+
+}
+
+#iconImg, #firstList, #SecondList {
+    text-align: center;
+}
+
+.card {
+    align-items: center;
+    background-color: white;
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+#city {
+    border-radius: 15px;
+    border-width: 1px;
+    position: relative;
+    top: -25px
+}
+
+#cityBtn {
+    border-radius: 15px;
+    margin-top: 5px;
+    border-width: 1px;
+}
+
+#cityBtn:hover {
+    background-color: rgb(215, 210, 210);
+    transition: 0.8s;
+}
+
+#cityName {
+    text-align: center;
+    margin: 15px;
+}
+
+#cityHistoryTitle {
+    text-align: center;
+}
+
+#currentTemp {
+    font-size: 25px;
+}
+
+.table {
+    text-align: center;
+
+}
+
+#tableBody {
+    background-color: white;
+    border-left: solid;
+    border-right: solid;
+    border-left-width: 1px;
+    border-right-width: 1px; 
+}
+
+#iconImg {
+    width: 75%;
+}
+
+#cityHistoryItem:hover {
+    background-color: #ddd;
+    transition: 0.8s;
+}

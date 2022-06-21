@@ -1,0 +1,22 @@
+#title{
+	text-align: center;
+}
+
+#noteForm{
+	text-align: center;
+}
+
+#form-title{
+	width: 400px;
+}
+
+
+#form-content{
+	outline: none;
+	width: 400px;
+	height: 400px;
+}
+
+#form-id{
+	width: 400px;
+}

@@ -1,0 +1,19 @@
+navbar {
+	padding: 20px;
+}
+
+body {
+	color: red;
+}
+
+#container{
+	text-align: center;
+}
+
+.container{
+	padding-bottom: 100px;
+}
+
+#tall{
+	height: 2000px;
+}

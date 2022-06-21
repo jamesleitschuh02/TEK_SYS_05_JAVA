@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../static/css/new-updateNote.css" th:href="@{/css/new-updateNote.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<h1 id="title" th:text="${newNote} ? 'CREATE NEW NOTE' : 'UPDATE NOTE'"></h1>
+
+<form 
+	id="noteForm" 
+	action="#" 
+	th:action="${newNote} ? '/notes/create' : '/notes/saveUpdates/'" 
+	autocomplete="off"
+	method="POST">
+
+	<label for="title">title:</label><br>
+	<input type="text"
+		   id="form-title" 
+		   th:field = "*{note.noteName}"
+	 	   placeholder="title">
+	<br>
+	 
+	<label for="content">content:</label><br>
+	<textarea type="text"
+		   id="form-content"
+		   th:field = "*{note.noteContent}" 
+	       placeholder="content">
+	</textarea><br>
+	
+	<!-- 
+	<label th:if="${newNote}" for="id">user id</label><br>
+	<input th:if="${newNote}" type="text" 
+		   id="form-id"
+		   th:field = "*{note.user.id}" 
+		   placeholder="user id">
+	<br th:if="${newNote}">
+	 -->
+	
+	<input th:if="${!newNote}" type="hidden"
+		   th:field = "*{note.id}" 
+		   placeholder="user id">
+	
+	<button class="border border-dark rounded" th:if="${newNote}" type="submit">Save Note</button>
+	<button class="border border-dark rounded" th:if="${!newNote}" type="submit">Update Note</button>
+	
+
+</form>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

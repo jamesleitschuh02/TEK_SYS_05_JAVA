@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../static/css/new-updateUpcomming.css" th:href="@{/css/new-updateUpcomming.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<h1 id="title" th:text="${newEvent} ? 'CREATE NEW EVENT' : 'UPDATE EVENT'"></h1>
+
+<form 
+	id="eventForm" 
+	action="#" 
+	th:action="${newEvent} ? '/upcomming/create' : '/upcomming/saveUpdates/'"
+	autocomplete="off"
+	method="POST">
+
+	<label for="name">name:</label><br>
+	<input type="text" 
+		   id = "form-name"
+		   th:field = "*{upcomming.eventName}"
+	 	   placeholder="task name">
+	<br>
+	 
+	 <!-- 
+	  -->
+	<label for="date">date:</label><br>
+	<input type="date" 
+		   id = "form-date"
+		   th:field = "*{upcomming.eventDate}" 
+	       placeholder="date">
+	<br>
+	
+	<label for="time">time:</label><br>
+	<input type="time"
+		   id="form-time"
+		   th:field = "*{upcomming.eventTime}"
+		   placeholder="time">
+	<br>
+	
+
+	 
+	
+	<input th:if="${!newEvent}" type="hidden" 
+		   th:field = "*{upcomming.upcommingId}" 
+		   placeholder="user id">
+	<br th:if="${!newEvent}">
+	
+	<button id="btn" class="border border-dark rounded" th:if="${newEvent}" type="submit">Save Event</button>
+	<button id="btn" class="border border-dark rounded" th:if="${!newEvent}" type="submit">Update Event</button>
+	
+
+</form>
+
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

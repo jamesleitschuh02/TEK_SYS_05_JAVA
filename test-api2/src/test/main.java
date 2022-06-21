@@ -5,8 +5,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import org.json.JSONArray;
-
 public class main {
 
 	public static void main(String[] args) {
@@ -25,8 +23,8 @@ public class main {
 		
 	}
 	
-	public static String parse(String responseBody) {
-		JSONArray albums = new JSONArray(responseBody);
-	}
+//	public static String parse(String responseBody) {
+//		JSONArray albums = new JSONArray(responseBody);
+//	}
 
 }

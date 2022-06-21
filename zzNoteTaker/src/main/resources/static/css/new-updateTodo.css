@@ -1,0 +1,17 @@
+#title{
+	text-align: center;
+}
+
+#taskForm{
+	text-align: center;
+}
+
+#form-name, #form-id {
+	outline: none;
+	margin-top: 15px;
+	width: 400px;
+}
+
+#btn{
+	margin-top: 15px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../static/css/settings.css" th:href="@{/css/settings.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<h1 id="title">USER SETTINGS</h1>
+
+<div id="content" class="container">
+
+<!-- 
+
+<form id="updateForm" action="#" th:action="@{/user/updateUserPage/}" th:object="${user}" method="GET">
+
+	<input id="inputIdValue" type="text" 
+	th:field = "*{id}" 
+	placeholder="ID number">
+	<br>
+	
+	<button id="updateBtn" type="submit">Update User</button>
+
+</form>
+ -->
+ 
+ <a th:href="@{/user/updateUserPage/{id}(id=${user.id})}">Update User</a>
+ <br>
+
+
+
+<!-- 
+<form id="deleteForm" action="#" th:action="@{/user/deleteUser/}" th:object="${user}" method="GET">
+
+	<input type="text" 
+	th:field = "*{id}" 
+	placeholder="ID number">
+	<br>
+	
+	<button id="deleteBtn" type="submit">Delete User</button>
+
+</form>
+ -->
+<br>
+<a th:href="@{/user/deleteUser/}">Delete User</a>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

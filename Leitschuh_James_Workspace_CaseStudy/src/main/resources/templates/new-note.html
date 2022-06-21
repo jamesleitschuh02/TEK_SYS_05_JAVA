@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>New/Update Note</title>
+
+<link rel="stylesheet" href="../static/css/new-note.css" th:href="@{/css/new-note.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<div class="container-fluid" id="wrapper">
+<h1 id="title">Create New Note</h1>
+
+<a id="previous" th:href="@{/main/notes}">back</a><br>
+
+<form 
+	id="noteForm" 
+	action="#" 
+	th:action="@{/notes/create}" 
+	autocomplete="off"
+	method="POST">
+
+	<label for="title">title:</label><br>
+	<input type="text"
+		   id="form-title" 
+		   th:field = "*{note.noteName}"
+	 	   placeholder="title">
+	<br>
+	 
+	<label for="content">content:</label><br>
+	<textarea type="text"
+		   id="form-content"
+		   th:field = "*{note.noteContent}" 
+	       placeholder="content">
+	</textarea><br>
+	
+	<!-- 
+	<input th:if="${!newNote}" type="hidden"
+		   th:field = "*{note.id}" 
+		   placeholder="user id">
+	 -->
+	
+	<button class="border border-dark rounded" th:if="${newNote}" type="submit">Save Note</button>
+	
+
+</form>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+#title{
+	text-align: center;	
+}
+
+#container{
+	text-align: center;
+	padding: 20px;
+}
+
+#login-form{
+	margin-bottom: 20px;
+}
+
+#new-user-link{
+	margin-left: 15%;
+}
+
+.jumbotron{
+	background-image: url(https://img.freepik.com/free-photo/cropped-shot-open-laptop-computer-wooden-table-copy-space-with-blurred-office_67155-5579.jpg?w=900);
+	background-position: center;
+	background-size: cover;
+}

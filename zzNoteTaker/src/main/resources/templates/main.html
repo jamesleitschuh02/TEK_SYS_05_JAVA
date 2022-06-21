@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Main</title>
+
+<link rel="stylesheet" href="../static/css/main.css"
+	th:href="@{/css/main.css}" />
+<link
+	href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+
+		<div class="container-fluid" id="wrapper">
+			<h2 id="title" th:text="|Welcome, ${user.name}|"></h2>
+			<hr class="my-4">
+
+
+			<div class="container-fluid">
+
+				<div class="row text-center">
+					<div class="col-2"></div>
+					<div class="col-8">
+						<div class="border" id="quote">
+							<figure class="note note-secondary p-4">
+								<blockquote class="blockquote">
+									<p class="pb-2" th:text="${quote}"></p>
+								</blockquote>
+								<figcaption class="blockquote-footer mb-0" th:text="${author}"></figcaption>
+							</figure>
+
+						</div>
+					</div>
+					<div class="col-2"></div>
+				</div>
+
+
+
+				<div class="row text-center">
+					<div class="col-4">
+						<h4>Weather</h4>
+					</div>
+					<div class="col-4"></div>
+					<div class="col-4">
+						<h4>Current Tasks</h4>
+					</div>
+				</div>
+
+
+
+
+				<div class="row text-center">
+					<div class="col-4" align="center">
+					<div id="weather-container">
+						<p id="date" th:text="|${day}, ${today}|"></p>
+						<p th:text="|${cityName}|"></p>
+						<p th:text="|${cityDescription}|"></p>
+						<p th:text="|${cityTemp} &#8457;|"></p>
+					</div>
+					</div>
+					<div class="col-4"></div>
+					<div class="col-4">
+						<table class="table table-hover table-sm overflow-y: hidden">
+							<tr class="table-default" th:each="task : ${taskList}">
+								<td th:if="${!task.completed}" th:text="${task.taskName}" />
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+			<hr class="my-4">
+
+
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-4"></div>
+					<div class="col-4">
+						<h3>Upcoming Today</h3>
+						<table class="table table-hover table-sm overflow-y: hidden">
+							<tr class="table-default" th:each="event : ${eventList}">
+								<td th:text="${event.eventName}" />
+								<td th:text="${event.eventDate}" />
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<h3 id="social">Social</h3>
+			<hr class="my-4">
+
+
+			<div class="row text-center">
+				<div class="col-4"></div>
+				<div class="col-4" align="center">
+					<div class="card text-dark bg-light mb-3" id="social-card"
+						style="max-width: 18rem;">
+						<div class="card-header">Samuel</div>
+						<div class="card-body">
+							<h5 class="card-title">Can anyone code in c#?</h5>
+							<p class="card-text">Working on a project and could use help with someone proficient in c#.</p>
+							<a href="#" class="btn btn-primary">add comment</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-4" align="center"></div>
+			</div>
+
+
+
+		</div>
+
+
+
+
+	<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

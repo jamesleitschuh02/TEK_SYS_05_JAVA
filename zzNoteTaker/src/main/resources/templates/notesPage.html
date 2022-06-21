@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../static/css/notesPage.css" th:href="@{/css/notesPage.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+<script type="text/javascript" th:src = "@{/js/notesPage.js}"></script>
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+
+  <div class="container-fluid" id="wrapper">
+<h1 id="title">Notes Page</h1>
+<a id="newNoteLink" th:href="@{/notes/create}">Create New Note</a><br>
+<div id="container">
+<!-- 
+<div id="notes-list">
+<table class="table table-hover table-sm overflow-y: hidden">
+	<tr class="table-secondary" th:each="note : ${notesList}">
+		<td th:text="${note.noteName}" />
+		<td th:text="${note.noteContent}" />
+		<td th:text="${note.user.id}" />
+		<td><a style="color:blue" th:href="@{/notes/update/{id}(id=${note.id})}">Update</a></td>
+		<td><a style="color:red" th:href="@{/notes/delete/{id}(id=${note.id})}">Delete</a></td>		
+	</tr>
+</table>
+ -->
+
+    <div class="row">
+      <div class="col-4 list-container">       
+        <div class="card">
+        	<ul  class="list-group" th:each="note : ${notesList}">
+        		<li 
+        			th:onclick="upload([[${note.id}]],[[${note.noteName}]],[[${note.noteContent}]] );"
+        			th:text="${note.noteName}" 
+        			class="list-group-item" 
+        			th:id="${note.Id}">
+        		</li>
+        	</ul>
+        </div>      
+      </div>
+      <div class="col-8" id="note-content-list">
+      	
+        <input 
+        	class="note-title" 
+        	id="note-title" 
+        	placeholder="Note Title" 
+        	th:value="${notesList.get(0).getNoteName}"
+        	maxlength="28" 
+        	type="text">
+        
+        <textarea 
+        	class="note-textarea" 
+        	id="note-text" 
+        	th:text="${notesList.get(0).getNoteContent}"
+        	placeholder="Note Text">
+        </textarea>
+               
+      </div>
+    </div>
+  </div>
+
+<div id="buttons" class="row">
+
+	<div class="col-3"></div>
+
+	<div class="col-3">
+		<button id="update-btn" th:data-id=${notesList.get(0).getId} th:onclick="|update()|">Save Updates</button>
+	</div>
+	
+	
+	
+	<div class="col-3">
+		<button id="delete-btn" th:data-id=${notesList.get(0).getId} th:onclick="|deleteNote()|">Delete</button>
+	</div>
+	
+	<div class="col-3"></div>
+</div>
+</div>
+	
+
+
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
+
+
+<!-- 
+        			th:attr="onclick=|upload('${note.Id}')|" 
+        		 -->

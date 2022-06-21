@@ -1,0 +1,17 @@
+#wrapper{
+	padding-bottom: 180px;
+	background-color: #F8F8FF;
+	box-shadow: 0px 5px 15px 1px rgba(59, 48, 48, 0.47);
+	height: 100%;
+	width: 98%;
+
+}
+
+#title{
+	text-align: center;
+}
+
+#task-table{
+	border: 5px solid black;
+	height: 500px;
+}

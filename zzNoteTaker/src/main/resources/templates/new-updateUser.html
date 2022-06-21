@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+<title>New User</title>
+
+<link rel="stylesheet" href="../static/css/new-updateUser.css" th:href="@{/css/new-updateUser.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div th:if="${!newUser}">
+	<div th:replace="~{fragments/navigation :: navigation}"></div>
+</div>
+
+<div class="container">
+<h2 id="title">Create New User</h2>
+
+<form id="personForm" 
+	action="#" 
+	th:action="${newUser} ? '/user/create' : '/user/saveUserUpdates/'" 
+	th:object="${user}" 
+	autocomplete="off"
+	method="POST">
+	
+	<input th:if="${!newUser}" type="hidden"
+	th:field = "*{id}">
+	<br th:if="${!newUser}">
+
+	<label for="name">name:</label><br>
+	<input class="input" type="text" 
+	th:field = "*{name}" 
+	placeholder="name">
+	<br>
+	
+	<label for="name">email:</label><br>
+	<input class="input" type="text" 
+	th:field = "*{email}" 
+	placeholder="email">
+	<br>
+	
+	<!-- 
+	<input class="input" type="text" 
+	th:field = "*{password}" 
+	placeholder="password">
+	<br>
+	 -->
+	
+	<button th:if="${newUser}" class="border border-dark rounded" id="save-button" type="submit">Save User</button>
+	<button th:if="${!newUser}" class="border border-dark rounded" id="save-button" type="submit">Update User</button>
+
+</form>
+</div>
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

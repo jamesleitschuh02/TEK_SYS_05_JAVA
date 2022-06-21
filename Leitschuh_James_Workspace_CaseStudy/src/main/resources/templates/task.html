@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Tasks</title>
+
+<link rel="stylesheet" href="../static/css/task.css" th:href="@{/css/task.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+
+
+
+<div class="container-fluid" id="wrapper">
+<h1 id="title">Daily Tasks</h1>
+
+<a id="newNoteLink" th:href="@{/task/create/}">Create New Task</a><br><br>
+
+<h4 id="no-task" th:if="${taskList.size == 0}">No tasks</h4>
+
+<h4 th:if="${taskList.size != 0}">Active Tasks</h4>
+
+<div th:each="task : ${taskList}">
+	<div th:if="${!task.completed}" id="task-item" class="border">
+		<div id="task-title" th:text="${task.taskName}"></div>
+		<div id="dropdown-options" class="dropdown">
+  			<button 
+  				class="btn-sml btn-primary dropdown-toggle" 
+  				type="button" 
+  				id="dropdownMenuButton" 
+  				data-toggle="dropdown" 
+  				aria-haspopup="true" 
+  				aria-expanded="false">
+    		Actions
+  			</button>
+  			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    			<a 
+    				class="dropdown-item" 
+    				th:href="@{/task/changeComplete/{id}(id=${task.taskId})}">
+    				Complete Task
+    			</a>
+    			<a 
+    				class="dropdown-item" 
+    				th:href="@{/task/update/{id}(id=${task.taskId})}">
+    				Update Task
+    			</a>
+    			<a 
+    				class="dropdown-item" 
+    				th:href="@{/task/delete/{id}(id=${task.taskId})}">
+    				Delete Task
+    			</a>
+  			</div>
+		</div>
+	</div>
+</div>
+
+
+<h4 th:if="${taskList.size != 0}">Completed Tasks</h4>
+<div th:each="task : ${taskList}">
+	<div th:if="${task.completed}" id="task-item" class="border">
+		<div id="task-title" th:text="${task.taskName}"></div>
+		<div id="dropdown-options" class="dropdown">
+  			<button 
+  				class="btn-sml btn-primary dropdown-toggle" 
+  				type="button" 
+  				id="dropdownMenuButton" 
+  				data-toggle="dropdown" 
+  				aria-haspopup="true" 
+  				aria-expanded="false">
+    		Actions
+  			</button>
+  			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    			<a 
+    				class="dropdown-item" 
+    				th:href="@{/task/changeComplete/{id}(id=${task.taskId})}">
+    				Undo Task
+    			</a>
+    			<a 
+    				class="dropdown-item" 
+    				th:href="@{/task/delete/{id}(id=${task.taskId})}">
+    				Delete Task
+    			</a>
+  			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Posts</title>
+
+<link rel="stylesheet" href="../static/css/posts.css" th:href="@{/css/posts.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+	<div th:replace="~{fragments/navigation :: navigation}"></div>
+	<div class="container-fluid">
+	
+	<a th:href="@{/posts/create}">Create New Post!</a>
+	
+	<div id="post-list">
+		<table class="table table-hover table-sm overflow-y: hidden">
+			<tr class="table-secondary" th:each="post : ${postList}">
+				<td th:text="${post.postName}" />		
+				<td th:text="|Date Created: ${post.createdAt}|" />
+				<td><a th:href="@{/posts/viewpost/{id}(id=${post.id})}">View</a></td>
+				<td th:if="${id == post.user.id}"><a style="color:red" th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a></td>
+			</tr>
+		</table>
+	</div>
+
+
+	</div>
+	<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

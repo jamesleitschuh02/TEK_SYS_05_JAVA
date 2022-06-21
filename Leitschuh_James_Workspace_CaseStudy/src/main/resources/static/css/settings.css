@@ -1,0 +1,20 @@
+#title{
+	text-align: center;
+}
+
+#content{
+	text-align: center;
+}
+
+#userID{
+	margin-top: 200px;
+	margin-bottom: 10px;
+}
+
+#updateBtn, #deleteBtn{
+	margin-top: 10px;
+}
+
+#updateForm, #deleteForm{
+	margin-top: 50px;
+}
