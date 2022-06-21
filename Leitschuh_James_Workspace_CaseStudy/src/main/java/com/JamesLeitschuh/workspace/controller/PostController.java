@@ -56,10 +56,10 @@ public class PostController {
 		model.addAttribute("id", userId);
 		
 		List<Comment> commentList = commentService.getAllCommentsById(id);
-		model.addAttribute("responseList", commentList);
+		model.addAttribute("commentList", commentList);
 		
 		
-		return "viewPostPage";
+		return "view-post";
 	}
 	
 	@GetMapping("/delete/{id}")

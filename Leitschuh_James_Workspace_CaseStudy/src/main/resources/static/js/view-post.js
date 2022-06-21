@@ -5,5 +5,5 @@ function comment(id) {
 	let comment = postComment.value;
 	postComment.value = "";
 	
-	window.location.replace("http://localhost:8080/responses/addComment/" + id + "/" + comment);
+	window.location.replace("http://localhost:8080/comment/addComment/" + id + "/" + comment);
 }

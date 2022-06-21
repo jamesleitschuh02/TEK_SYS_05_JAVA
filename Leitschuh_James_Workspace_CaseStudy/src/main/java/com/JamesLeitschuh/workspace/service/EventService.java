@@ -12,6 +12,8 @@ public interface EventService {
 	
 	List<Event> getAllEventsById(long id);
 	
+	List<Event> getAllEventsByIdOrdered(long id);
+	
 	Event getEventById(long id);
 	
 	Event updateEvent(Event event, long id);

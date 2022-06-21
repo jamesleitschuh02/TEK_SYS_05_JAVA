@@ -135,7 +135,7 @@ public class MainController {
 		
 		long id = userService.findByEmail(authentication.getName()).getId();
 		
-		List<Event> eventList = eventService.getAllEventsById(id);
+		List<Event> eventList = eventService.getAllEventsByIdOrdered(id);
 		
 		model.addAttribute("eventList", eventList);
 		return "event";

@@ -9,10 +9,11 @@
 
 </head>
 <body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
 
-
+<div class="container-fluid" id="wrapper">
 <form 
-	id="postForm" 
+	id="post-form" 
 	action="#" 
 	th:action="@{/posts/create}" 
 	autocomplete="off"
@@ -26,7 +27,7 @@
 	<br>
 	 
 	<label for="post_description">description:</label><br>
-	<textarea type="text"
+	<textarea
 		   id="post_description"
 		   th:field = "*{post.postDesc}" 
 	       placeholder="description">
@@ -37,5 +38,6 @@
 
 </form>
 
+</div>
 </body>
 </html>

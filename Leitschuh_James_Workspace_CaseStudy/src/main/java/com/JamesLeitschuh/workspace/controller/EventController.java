@@ -48,7 +48,7 @@ public class EventController {
 	@GetMapping("/update/{id}")
 	private String updateEvent(Model model, @PathVariable("id") long eventId) {
 		Event event = eventService.getEventById(eventId);
-		model.addAttribute("upcomming", event);
+		model.addAttribute("event", event);
 		
 		boolean newEvent = false;
 		model.addAttribute("newEvent", newEvent);

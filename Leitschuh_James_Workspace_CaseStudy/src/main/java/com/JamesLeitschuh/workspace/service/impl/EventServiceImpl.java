@@ -30,6 +30,11 @@ public class EventServiceImpl implements EventService {
 	public List<Event> getAllEventsById(long id) {
 		return eventRepo.findAllEventsById(id);
 	}
+	
+	@Override
+	public List<Event> getAllEventsByIdOrdered(long id){
+		return eventRepo.findAllEventsByIdOrdered(id);
+	}
 
 	@Override
 	public Event getEventById(long id) {

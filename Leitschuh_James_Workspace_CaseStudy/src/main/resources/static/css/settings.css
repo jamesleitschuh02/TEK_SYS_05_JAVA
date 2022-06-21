@@ -2,19 +2,9 @@
 	text-align: center;
 }
 
-#content{
-	text-align: center;
-}
-
-#userID{
-	margin-top: 200px;
-	margin-bottom: 10px;
-}
-
-#updateBtn, #deleteBtn{
-	margin-top: 10px;
-}
-
-#updateForm, #deleteForm{
-	margin-top: 50px;
+#wrapper{
+	padding-bottom: 180px;
+	background-color: #F8F8FF;
+	box-shadow: 0px 5px 15px 1px rgba(59, 48, 48, 0.47);
+	width: 98%;
 }
