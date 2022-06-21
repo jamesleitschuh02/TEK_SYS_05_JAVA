@@ -8,3 +8,16 @@
 	box-shadow: 0px 5px 15px 1px rgba(59, 48, 48, 0.47);
 	width: 98%;
 }
+
+#settings-card{
+
+}
+
+.list-group-item:hover{
+	background-color: #ededeb;
+}
+
+#delete{
+	text-align: center;
+	color: red;
+}

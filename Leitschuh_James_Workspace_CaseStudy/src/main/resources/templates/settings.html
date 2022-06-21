@@ -12,15 +12,45 @@
 	<div th:replace="~{fragments/navigation :: navigation}"></div>
 	<div id="wrapper" class="container-fluid">
 
-	<h1 id="title">USER SETTINGS</h1>
+	<h1 id="title">Settings</h1>
 
  
-	<a th:href="@{/user/updateUserPage/{id}(id=${user.id})}">Update User</a>
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6">
+			<div class="card" id="settings-card">
+  				<div class="card-header">User Information</div>
+  					<div class="list-group list-group-flush">
+    					<a 
+    						th:href="@{/main/}" 
+    						th:text="${user.firstName}" 
+    						class="list-group-item list-group-item-action">
+    					</a>
+    					<a 
+    						th:href="@{/main/}" 
+    						th:text="${user.lastName}" 
+    						class="list-group-item list-group-item-action">
+    					</a>
+    					<a 
+    						th:href="@{/main/}" 
+    						th:text="${user.email}" 
+    						class="list-group-item list-group-item-action">
+    					</a>
+    					<a 
+    						th:href="@{/main/}" 
+    						th:text="${user.city}" 
+    						class="list-group-item list-group-item-action">
+    					</a>
+  					</div>
+			</div>
+		</div>
+		<div class="col-3"></div>
+	</div>
 
-	<br>
-	<br>
-
-	<a th:href="@{/user/deleteUser/}">Delete User</a>
+	<div id="buttons">
+	<button id="update-password" th:href="@{/}">Change Password</button>
+	<button id="delete" th:href="@{/user/deleteUser/}">Delete User</button>
+	</div>
 
 	</div>
 
