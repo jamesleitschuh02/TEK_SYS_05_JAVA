@@ -55,4 +55,12 @@ public class Post {
 	@JsonManagedReference
 	private List<Comment> comments = new ArrayList<>();
 
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", postName=" + postName + ", postDesc=" + postDesc + ", createdAt=" + createdAt
+				+ ", comments=" + comments + "]";
+	}
+
+	
+	
 }

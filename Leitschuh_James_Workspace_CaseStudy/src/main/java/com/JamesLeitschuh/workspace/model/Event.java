@@ -44,4 +44,12 @@ public class Event {
 	@JsonBackReference
 	private User user;
 
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", eventName=" + eventName + ", eventDate=" + eventDate + ", eventTime="
+				+ eventTime + "]";
+	}
+
+	
+	
 }

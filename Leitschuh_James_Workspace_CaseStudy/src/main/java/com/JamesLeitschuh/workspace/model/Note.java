@@ -37,4 +37,11 @@ public class Note {
 	@JsonBackReference
 	private User user;
 
+	@Override
+	public String toString() {
+		return "Note [id=" + id + ", noteName=" + noteName + ", noteContent=" + noteContent + "]";
+	}
+
+	
+	
 }

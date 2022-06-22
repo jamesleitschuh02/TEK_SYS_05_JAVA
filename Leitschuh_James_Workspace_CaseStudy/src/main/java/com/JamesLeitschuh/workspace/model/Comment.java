@@ -45,4 +45,11 @@ public class Comment {
 	@JsonBackReference
 	private User user;
 
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", commentDesc=" + commentDesc + ", createdAt=" + createdAt + "]";
+	}
+
+	
+	
 }

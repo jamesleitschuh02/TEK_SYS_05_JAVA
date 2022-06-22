@@ -17,7 +17,21 @@
 	background-color: #ededeb;
 }
 
+#buttons{
+	display: flex;
+	flex-direction: column;
+	width: 150px;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
+
 #delete{
 	text-align: center;
 	color: red;
+}
+
+#update-password{
+	color: blue;
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,7 +72,8 @@ public class MainController {
 		String today = dtf.format(LocalDate.now());
 		model.addAttribute("today", today);
 		
-		String uri = "https://api.openweathermap.org/data/2.5/weather?q=plymouth&appid=bf0a61546d9083e91b1a07813951c139&units=imperial";
+		String city = user.getCity();
+		String uri = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=bf0a61546d9083e91b1a07813951c139&units=imperial";
 		RestTemplate restTemplate = new RestTemplate();
 		String result = restTemplate.getForObject(uri, String.class);
 		
@@ -153,5 +156,16 @@ public class MainController {
 		
 		return "posts";
 	}
+	
+//    @GetMapping("/login")
+//    public String login() {
+//        
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // this location is where spring stores your user object that just logged in
+//        if (principal instanceof UserDetails) {
+//            return "redirect:/"; // redirect to home page if logged in already
+//        }
+//        
+//        return "login";
+//    }
 
 }
