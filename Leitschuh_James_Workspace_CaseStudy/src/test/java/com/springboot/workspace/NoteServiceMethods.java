@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -30,7 +29,7 @@ import com.JamesLeitschuh.workspace.service.impl.NoteServiceImpl;
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class NoteServiceTest {
+public class NoteServiceMethods {
 	
 	@TestConfiguration
 	static class NoteServiceImplTestContextConfiguration {
@@ -47,7 +46,7 @@ public class NoteServiceTest {
 	@MockBean
 	private NoteRepository noteRepo;
 	
-	@BeforeAll
+	@Before
 	public void setUp() {
 		Note note = new Note();
 		List<Note> notes = new ArrayList<>();
@@ -58,7 +57,7 @@ public class NoteServiceTest {
 	
 	
 	@Test
-	void getAllNotesTest() {
+	public void getAllNotesTest() {
 		List<Note> testNotes = noteService.getAllNotes();
 		assertThat(testNotes).hasSize(1);
 	}
