@@ -16,7 +16,11 @@
 	
 	<h1 th:text="${post.postName}" id="post-name"></h1>
 	
-	<p th:text="${post.postDesc}" id="post-desc"></p><br><br>
+	<p th:text="${post.postDesc}" id="post-desc"></p><br>
+	
+	<p th:text="|by: ${post.user.firstName}|"></p>
+	
+	<br><br>
 	
 	<textarea class="border" placeholder="Leave a comment here.." id="post-comment" autocomplete="off"></textarea><br>
 	<button class="border border-dark rounded" th:onclick="comment([[${post.id}]])">comment</button>

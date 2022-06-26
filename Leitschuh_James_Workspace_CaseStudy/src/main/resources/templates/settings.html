@@ -22,22 +22,22 @@
   				<div class="card-header">User Information</div>
   					<div class="list-group list-group-flush">
     					<a 
-    						th:href="@{/main/}" 
+    						th:href="@{/user/update/firstName}" 
     						th:text="${user.firstName}" 
     						class="list-group-item list-group-item-action">
     					</a>
     					<a 
-    						th:href="@{/main/}" 
+    						th:href="@{/user/update/lastName}" 
     						th:text="${user.lastName}" 
     						class="list-group-item list-group-item-action">
     					</a>
     					<a 
-    						th:href="@{/main/}" 
+    						th:href="@{/user/update/email}" 
     						th:text="${user.email}" 
     						class="list-group-item list-group-item-action">
     					</a>
     					<a 
-    						th:href="@{/main/}" 
+    						th:href="@{/user/update/city}" 
     						th:text="${user.city}" 
     						class="list-group-item list-group-item-action">
     					</a>
@@ -48,7 +48,7 @@
 	</div>
 
 	<div id="buttons">
-	<button class="border border-dark rounded" id="update-password" th:href="@{/}">Change Password</button>
+	<button class="border border-dark rounded" id="update-password"><a th:href="@{/user/update/password}">Change Password</a></button>
 	<br>
 	<button class="border border-dark rounded" id="delete" th:href="@{/user/deleteUser/}">Delete User</button>
 	</div>

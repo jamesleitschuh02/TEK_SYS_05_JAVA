@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	@GetMapping("/create")
 	public String newUserPage(Model model) {
 		User user = new User();
@@ -42,30 +46,80 @@ public class UserController {
 		userService.save(userDto);
 		return "redirect:/main/login/";
 	}
-		   
-	@GetMapping("/updateUserPage/{id}")
-	public String updateUserPage(Model model, @PathVariable("id") long id) {
-		User user = userService.getUserById(id);
-		model.addAttribute("user", user);	
-		
-		boolean newUser = false;
-		model.addAttribute("newUser", newUser);
-		
-		return "new-updateUser";
+	
+	@GetMapping("/update/firstName")
+	public String updateFirstName(Model model, Authentication authentication) {
+		User user = userService.findByEmail(authentication.getName());
+		model.addAttribute("user", user);
+		return "update-user-first-name";
 	}
 	
-	@PostMapping("/saveUserUpdates")
-	public String saveUserUpdates(@ModelAttribute("user") User user) {	
-		User newUser = userService.getUserById(user.getId());
-		
-		newUser.setFirstName(user.getFirstName());
-		newUser.setLastName(user.getLastName());
-		newUser.setEmail(user.getEmail());
-		newUser.setPassword(user.getPassword());
-		
-		userService.createUser(newUser);
-		
-		return "redirect:/main/settings/";
+	@PostMapping("/update/firstName")
+	public String updateFirstName(@ModelAttribute("user") User user, Authentication authentication) {
+		User existingUser = userService.findByEmail(authentication.getName());
+		existingUser.setFirstName(user.getFirstName());
+		userService.createUser(existingUser);
+		return "redirect:/main/settings";
+	}
+	
+	@GetMapping("/update/lastName")
+	public String updateLastName(Model model, Authentication authentication) {
+		User user = userService.findByEmail(authentication.getName());
+		model.addAttribute("user", user);
+		return "update-user-last-name";
+	}
+	
+	@PostMapping("/update/lastName")
+	public String updateLastName(@ModelAttribute("user") User user, Authentication authentication) {
+		User existingUser = userService.findByEmail(authentication.getName());
+		existingUser.setLastName(user.getLastName());
+		userService.createUser(existingUser);
+		return "redirect:/main/settings";
+	}
+	
+	@GetMapping("/update/email")
+	public String updateEmail(Model model, Authentication authentication) {
+		User user = userService.findByEmail(authentication.getName());
+		model.addAttribute("user", user);
+		return "update-user-email";
+	}
+	
+	@PostMapping("/update/email")
+	public String updateEmail(@ModelAttribute("user") User user, Authentication authentication) {
+		User existingUser = userService.findByEmail(authentication.getName());
+		existingUser.setEmail(user.getEmail());
+		userService.createUser(existingUser);
+		return "redirect:/logout";
+	}
+	
+	@GetMapping("/update/city")
+	public String updateCity(Model model, Authentication authentication) {
+		User user = userService.findByEmail(authentication.getName());
+		model.addAttribute("user", user);
+		return "update-user-city";
+	}
+	
+	@PostMapping("/update/city")
+	public String updateCity(@ModelAttribute("user") User user, Authentication authentication) {
+		User existingUser = userService.findByEmail(authentication.getName());
+		existingUser.setCity(user.getCity());
+		userService.createUser(existingUser);
+		return "redirect:/main/settings";
+	}
+	
+	@GetMapping("/update/password")
+	public String updatePassword(Model model, Authentication authentication) {
+		User user = userService.findByEmail(authentication.getName());
+		model.addAttribute("user", user);
+		return "update-user-password";
+	}
+	
+	@PostMapping("/update/password")
+	public String updatePassword(@ModelAttribute("user") User user, Authentication authentication) {
+		User existingUser = userService.findByEmail(authentication.getName());
+		existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		userService.createUser(existingUser);
+		return "redirect:/main/settings";
 	}
 	
 	@GetMapping("/deleteUser")

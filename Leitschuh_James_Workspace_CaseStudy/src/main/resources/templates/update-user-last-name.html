@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Update User Last Name</title>
+
+<link rel="stylesheet" href="../static/css/update-user.css" th:href="@{/css/update-user.css}" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
+
+</head>
+<body>
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<div class="container-fluid" id="wrapper">
+<h1 id="title">Enter new last name</h1>
+
+<a id="previous" th:href="@{/main/settings}">back</a><br>
+
+<form 
+	id="userForm" 
+	th:action="@{/user/update/lastName}" 
+	autocomplete="off"
+	method="POST">
+
+	<label for="name">Last Name:</label><br>
+	<input type="text"
+		   id="form-lastName" 
+		   th:field = "*{user.lastName}"
+	 	   placeholder="last name">
+	 	   
+	<button class="border border-dark rounded" type="submit">Update Last Name</button>
+	
+
+</form>
+
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

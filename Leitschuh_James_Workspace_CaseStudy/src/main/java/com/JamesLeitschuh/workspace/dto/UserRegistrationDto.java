@@ -57,4 +57,12 @@ public class UserRegistrationDto {
 		this.password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "UserRegistrationDto [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", city="
+				+ city + ", password=" + password + "]";
+	}
+	
+	
+
 }

@@ -12,6 +12,8 @@ public interface TaskService {
 	
 	List<Task> getAllTasksById(long id);
 	
+	List<Task> getAllIncompleteTasksById(long id);
+	
 	Task getTaskById(long id);
 	
 	Task updateTask(Task task, long id);

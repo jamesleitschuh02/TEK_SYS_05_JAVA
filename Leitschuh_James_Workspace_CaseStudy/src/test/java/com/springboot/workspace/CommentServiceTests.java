@@ -20,46 +20,46 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Note;
-import com.JamesLeitschuh.workspace.repository.NoteRepository;
-import com.JamesLeitschuh.workspace.service.NoteService;
-import com.JamesLeitschuh.workspace.service.impl.NoteServiceImpl;
+import com.JamesLeitschuh.workspace.model.Comment;
+import com.JamesLeitschuh.workspace.repository.CommentRepository;
+import com.JamesLeitschuh.workspace.service.CommentService;
+import com.JamesLeitschuh.workspace.service.impl.CommentServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class NoteServiceMethods {
+public class CommentServiceTests {
 	
 	@TestConfiguration
-	static class NoteServiceImplTestContextConfiguration {
+	static class CommentServiceImplTestContextConfiguration {
 		
 		@Bean
-		public NoteService noteService() {
-			return new NoteServiceImpl();
+		public CommentService commentService() {
+			return new CommentServiceImpl();
 		}
 	}
 	
 	@Autowired
-	NoteService noteService;
+	CommentService commentService;
 	
 	@MockBean
-	private NoteRepository noteRepo;
+	private CommentRepository commentRepo;
 	
 	@Before
 	public void setUp() {
-		Note note = new Note();
-		List<Note> notes = new ArrayList<>();
-		notes.add(note);
+		Comment comment = new Comment();
+		List<Comment> comments = new ArrayList<>();
+		comments.add(comment);
 		
-		Mockito.when(noteRepo.findAll()).thenReturn(notes);
+		Mockito.when(commentRepo.findAll()).thenReturn(comments);
 	}
 	
 	
 	@Test
-	public void getAllNotesTest() {
-		List<Note> testNotes = noteService.getAllNotes();
-		assertThat(testNotes).hasSize(1);
+	public void getAllCommentsTest() {
+		List<Comment> testComments = commentService.getAllComments();
+		assertThat(testComments).hasSize(1);
 	}
 
 }

@@ -4,3 +4,17 @@
 	box-shadow: 0px 5px 15px 1px rgba(59, 48, 48, 0.47);
 	width: 98%;
 }
+
+#title{
+	text-align: center;
+}
+
+
+#dropdown-options{
+	text-align: right;
+}
+
+#dropdownMenuButton{
+	border-radius: 25px;
+	text-align: center;
+}

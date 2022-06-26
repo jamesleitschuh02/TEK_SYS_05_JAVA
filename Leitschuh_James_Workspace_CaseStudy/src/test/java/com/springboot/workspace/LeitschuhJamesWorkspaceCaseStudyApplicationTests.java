@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
 import com.JamesLeitschuh.workspace.controller.MainController;
 import com.JamesLeitschuh.workspace.controller.NoteController;
+import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
 import com.JamesLeitschuh.workspace.controller.CommentController;
 import com.JamesLeitschuh.workspace.controller.EventController;
 import com.JamesLeitschuh.workspace.controller.PostController;

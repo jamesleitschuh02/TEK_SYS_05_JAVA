@@ -30,6 +30,11 @@ public class TaskServiceImpl implements TaskService{
 	public List<Task> getAllTasksById(long id) {
 		return taskRepo.findAllTasksById(id);
 	}
+	
+	@Override
+	public List<Task> getAllIncompleteTasksById(long id) {
+		return taskRepo.findAllIncompleteTasksById(id);
+	}
 
 	@Override
 	public Task getTaskById(long id) {

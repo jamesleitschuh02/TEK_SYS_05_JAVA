@@ -63,12 +63,12 @@
           <a class="nav-link" th:href="@{/main/event}"><small>Events</small></a>
         </li>
         
-        <li th:if="@{${#httpServletRequest.requestURI} == '/main/posts'}" class="nav-item active">
-          <a class="nav-link" th:href="@{/main/posts}"><strong>Posts</strong></a>
+        <li th:if="@{${#httpServletRequest.requestURI} == '/main/posts/date'} or @{${#httpServletRequest.requestURI} == '/main/posts/user'}" class="nav-item active">
+          <a class="nav-link" th:href="@{/main/posts/date}"><strong>Posts</strong></a>
         </li>
         
-        <li th:if="@{${#httpServletRequest.requestURI} != '/main/posts'}" class="nav-item">
-          <a class="nav-link" th:href="@{/main/posts}"><small>Posts</small></a>
+        <li th:if="@{${#httpServletRequest.requestURI} != '/main/posts/date'} and @{${#httpServletRequest.requestURI} != '/main/posts/user'}"  class="nav-item">
+          <a class="nav-link" th:href="@{/main/posts/date}"><small>Posts</small></a>
         </li>
         
       </ul>

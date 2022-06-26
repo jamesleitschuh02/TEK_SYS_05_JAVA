@@ -57,12 +57,14 @@ public class MainController {
 		User user = userService.findByEmail(authentication.getName());
 		model.addAttribute("user", user);
 		
-		List<Note> notesList = noteService.getAllNotes();
-		List<Task> taskList = taskService.getAllTasks();
-		List<Event> eventList = eventService.getAllEvents();
+		List<Note> notesList = noteService.getAllNotesById(user.getId());
+		List<Task> taskList = taskService.getAllIncompleteTasksById(user.getId());
+		List<Event> eventList = eventService.getAllEventsByIdOrdered(user.getId());
+		List<Post> postList = postService.getAllPosts();
 		model.addAttribute("notesList", notesList);
 		model.addAttribute("taskList", taskList);
 		model.addAttribute("eventList", eventList);
+		model.addAttribute("postList", postList);
 		
 		LocalDate date = LocalDate.now();
 		DayOfWeek day = date.getDayOfWeek();
@@ -71,24 +73,30 @@ public class MainController {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd");
 		String today = dtf.format(LocalDate.now());
 		model.addAttribute("today", today);
-		
-		String city = user.getCity();
-		String uri = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=bf0a61546d9083e91b1a07813951c139&units=imperial";
-		RestTemplate restTemplate = new RestTemplate();
-		String result = restTemplate.getForObject(uri, String.class);
-		
-		// CONVERT RESULT INTO JSON OBJECT
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode node = mapper.readTree(result);
-		
-		String cityName = node.get("name").asText();
-		String cityDescription = node.get("weather").get(0).get("description").asText();
-		String cityTemp = node.get("main").get("temp").asText();
-		
-		model.addAttribute("cityName", cityName);
-		model.addAttribute("cityDescription", cityDescription);
-		model.addAttribute("cityTemp", cityTemp);
-		
+	
+		try {
+			String city = user.getCity();
+			String uri = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=bf0a61546d9083e91b1a07813951c139&units=imperial";
+			RestTemplate restTemplate = new RestTemplate();
+			String result = restTemplate.getForObject(uri, String.class);
+			
+			// CONVERT RESULT INTO JSON OBJECT
+			ObjectMapper mapper = new ObjectMapper();
+			JsonNode node = mapper.readTree(result);
+			
+			String cityName = node.get("name").asText();
+			String cityDescription = node.get("weather").get(0).get("description").asText();
+			String cityTemp = node.get("main").get("temp").asText();
+			
+			model.addAttribute("isCity", true);
+			model.addAttribute("cityName", cityName);
+			model.addAttribute("cityDescription", cityDescription);
+			model.addAttribute("cityTemp", cityTemp);		
+		}catch(Exception e) {
+			System.out.println(e);
+			model.addAttribute("isCity", false);
+		}
+				
 		// GET QUOTE
 		Quotes quotes = new Quotes();
 		String[] quote = quotes.getRandomQuote();	
@@ -144,8 +152,8 @@ public class MainController {
 		return "event";
 	}
 	
-	@GetMapping("/posts")
-	public String getPostsPage(Model model, Authentication authentication) {
+	@GetMapping("/posts/date")
+	public String getPostsPageDate(Model model, Authentication authentication) {
 		
 		long id = userService.findByEmail(authentication.getName()).getId();
 		
@@ -157,15 +165,17 @@ public class MainController {
 		return "posts";
 	}
 	
-//    @GetMapping("/login")
-//    public String login() {
-//        
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // this location is where spring stores your user object that just logged in
-//        if (principal instanceof UserDetails) {
-//            return "redirect:/"; // redirect to home page if logged in already
-//        }
-//        
-//        return "login";
-//    }
+	@GetMapping("/posts/user")
+	public String getPostsPageUser(Model model, Authentication authentication) {
+		
+		long id = userService.findByEmail(authentication.getName()).getId();
+		
+		List<Post> postList = postService.getAllPostsOrderedByUser();
+		
+		model.addAttribute("postList", postList);
+		model.addAttribute("id", id);
+		
+		return "posts";
+	}
 
 }

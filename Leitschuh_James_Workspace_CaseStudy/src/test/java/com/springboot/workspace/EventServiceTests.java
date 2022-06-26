@@ -20,45 +20,46 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Task;
-import com.JamesLeitschuh.workspace.repository.TaskRepository;
-import com.JamesLeitschuh.workspace.service.TaskService;
-import com.JamesLeitschuh.workspace.service.impl.TaskServiceImpl;
+import com.JamesLeitschuh.workspace.model.Event;
+import com.JamesLeitschuh.workspace.repository.EventRepository;
+import com.JamesLeitschuh.workspace.service.EventService;
+import com.JamesLeitschuh.workspace.service.impl.EventServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class TaskServiceMethods {
+public class EventServiceTests {
 	
 	@TestConfiguration
-	static class TaskServiceImplTestContextConfiguration {
+	static class EventServiceImplTestContextConfiguration {
 		
 		@Bean
-		public TaskService taskService() {
-			return new TaskServiceImpl();
+		public EventService eventService() {
+			return new EventServiceImpl();
 		}
 	}
 	
 	@Autowired
-	TaskService taskService;
+	EventService eventService;
 	
 	@MockBean
-	private TaskRepository taskRepo;
+	private EventRepository eventRepo;
 	
 	@Before
 	public void setUp() {
-		Task task = new Task();
-		List<Task> tasks = new ArrayList<>();
-		tasks.add(task);
+		Event event = new Event();
+		List<Event> events = new ArrayList<>();
+		events.add(event);
 		
-		Mockito.when(taskRepo.findAll()).thenReturn(tasks);
+		Mockito.when(eventRepo.findAll()).thenReturn(events);
 	}
 	
+	
 	@Test
-	public void getAllTasksTest() {
-		List<Task> testTasks = taskService.getAllTasks();
-		assertThat(testTasks).hasSize(1);
+	public void getAllEventsTest() {
+		List<Event> testEvents = eventService.getAllEvents();
+		assertThat(testEvents).hasSize(1);
 	}
 
 }

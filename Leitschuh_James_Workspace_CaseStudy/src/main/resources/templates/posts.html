@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Posts</title>
 
 <link rel="stylesheet" href="../static/css/posts.css" th:href="@{/css/posts.css}" />
 <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div th:replace="~{fragments/navigation :: navigation}"></div>
 	<div class="container-fluid" id="wrapper">
 	
+	<h1 id="title">Posts</h1>
+
+
+	<div id="dropdown-options" class="dropdown">
+  		<button 
+  			class="btn-sml btn-primary dropdown-toggle" 
+  			type="button" 
+  			id="dropdownMenuButton" 
+ 			data-toggle="dropdown" 
+  			aria-haspopup="true" 
+  			aria-expanded="false">
+    	Order By
+  		</button>
+  		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    		<a 
+    			class="dropdown-item" 
+    			th:href="@{/main/posts/date}">
+    			Date
+    		</a>
+    		<a 
+    			class="dropdown-item" 
+    			th:href="@{/main/posts/user}">
+    			User
+    		</a>
+  		</div>
+	</div>
+
+
+	
 	<a th:href="@{/posts/create}">Create New Post!</a>
 	
-	<div id="post-list">
-		<table class="table table-hover table-sm overflow-y: hidden">
-			<tr class="table-secondary" th:each="post : ${postList}">
-				<td th:text="${post.postName}" />		
-				<td th:text="|Date Created: ${post.createdAt}|" />
-				<td><a th:href="@{/posts/viewpost/{id}(id=${post.id})}">View</a></td>
-				<td th:if="${id == post.user.id}"><a style="color:red" th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a></td>
+	<div class="border" id="post-list">
+		<table id="post-table" class="table table-hover">
+			<tr class="table-light" th:each="post : ${postList}">
+				<td class="border-bottom" th:text="${post.postName}" />		
+				<td class="border-bottom" th:text="|Date Created: ${post.createdAt}|" />
+				<td class="border-bottom"><a th:href="@{/posts/viewpost/{id}(id=${post.id})}">View</a></td>
+				<td class="border-bottom" th:if="${id == post.user.id}"><a style="color:red" th:href="@{/posts/delete/{id}(id=${post.id})}">Delete</a></td>
 			</tr>
 		</table>
 	</div>

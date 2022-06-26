@@ -8,8 +8,8 @@ function upload(id, noteTitle, noteContent) {
 	let deleteBtn = document.getElementById('delete-btn');
 	deleteBtn.dataset.id = id;
 	
-	let listId = document.getElementById(id);
-	listId.className = "list-group-item active";
+//	let listId = document.getElementById(id);
+//	listId.className = "list-group-item active";
 	
 	let title = document.getElementById('note-title');
 	title.value = noteTitle;

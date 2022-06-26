@@ -13,5 +13,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 			value = "SELECT * FROM tasks WHERE tasks.user_id = ?1",
 			nativeQuery = true)
 	List<Task> findAllTasksById(long id);
+	
+	@Query(
+			value = "SELECT * FROM tasks WHERE (tasks.user_id = ?1 AND tasks.completed = 0)",
+			nativeQuery = true)
+	List<Task> findAllIncompleteTasksById(long id);
 
 }

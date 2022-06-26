@@ -19,6 +19,8 @@
 
 <a id="newNoteLink" th:href="@{/event/create/}">Create New Event</a><br>
 
+<h4 th:if="${eventList.size() == 0}">No Events</h4>
+
 <div id="event-card" th:each="event : ${eventList}">
 	
 	<div class="card text-center">
