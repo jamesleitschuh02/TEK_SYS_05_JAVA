@@ -7,3 +7,12 @@ Workspace is an easy to use management system. Once a user registers with the ap
 ## Database Diagram
 ![alt_text](./images/Workspace_Database_Diagram.JPG)
 ## Built With
+- Java 11
+- Spring
+- HTML 5
+- CSS
+- JavaScript
+- Thymeleaf
+- Lombok
+- JUNIT 5
+- Mockito
