@@ -67,8 +67,17 @@ public class UserRepositoryTests {
 	
 	@ParameterizedTest
     @CsvFileSource(resources = "/com/springboot/workspace/test-data.csv")
-    public void saveUserTest(String firstName, String lastName, String Email, String Password, String City) {
-        assertNotNull(firstName);
+    public void saveUserTest(String firstName, String lastName, String email, String password, String city) {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setCity(city);
+        userRepo.save(user);
+        
+        User user2 = userRepo.findByEmail(user.getEmail());
+        assertEquals(user, user2);
     }
 
 }
