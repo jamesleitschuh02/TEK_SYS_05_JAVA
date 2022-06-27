@@ -5,5 +5,5 @@ Workspace is an easy to use management system. Once a user registers with the ap
 ## Wireframe
 ![alt_text](./images/Capstone_Wireframe.jpg)
 ## Database Diagram
-![alt_text](./images/Workspace_Database_Diagram.jpg)
+![alt_text](./images/Workspace_Database_Diagram.JPG)
 ## Built With
