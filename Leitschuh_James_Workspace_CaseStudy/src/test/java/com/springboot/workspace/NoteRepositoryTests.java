@@ -16,23 +16,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Event;
+import com.JamesLeitschuh.workspace.model.Note;
 import com.JamesLeitschuh.workspace.model.User;
-import com.JamesLeitschuh.workspace.repository.EventRepository;
+import com.JamesLeitschuh.workspace.repository.NoteRepository;
 import com.JamesLeitschuh.workspace.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
-public class EventRepositoryTests {
+public class NoteRepositoryTests {
 	
 	@Autowired
-	private EventRepository eventRepo;
+	NoteRepository noteRepo;
 	
 	@Autowired
-	private UserRepository userRepo;
-	
+	UserRepository userRepo;
 	
 	@BeforeEach
 	public void setUp() {
@@ -50,7 +49,7 @@ public class EventRepositoryTests {
 	}
 	
 	@Test
-	public void findAllEventsByIdTest() {
+	public void findAllNotesByIdTest() {
 		
 		User user = new User();
 		user.setFirstName("insideTest");
@@ -59,29 +58,11 @@ public class EventRepositoryTests {
 		user.setPassword("insideTest");
 		userRepo.save(user);
 		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
+		Note note = new Note();
+		note.setUser(user);
+		noteRepo.save(note);
 		
-		List<Event> result = eventRepo.findAllEventsById(user.getId());
-		assertEquals(result.size(), 1);
-	}
-	
-	@Test
-	public void findAllEventsByIdOrderedTest() {
-		
-		User user = new User();
-		user.setFirstName("insideTest");
-		user.setLastName("insdieTest");
-		user.setEmail("insideTest");
-		user.setPassword("insideTest");
-		userRepo.save(user);
-		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
-		
-		List<Event> results = eventRepo.findAllEventsByIdOrdered(user.getId());
+		List<Note> results = noteRepo.findAllNotesById(user.getId());
 		assertEquals(results.size(), 1);
 	}
 

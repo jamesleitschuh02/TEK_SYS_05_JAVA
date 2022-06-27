@@ -42,12 +42,12 @@ public class CommentRepositoryTests {
 	
 	@BeforeEach
 	public void setUp() {
-		System.out.println(">>inside setUp, starting new test");
+		System.out.println("\n>>inside setUp, starting new test\n");
 	}
 	
 	@AfterEach
 	public void cleanUp() {
-		System.out.println(">>inside cleanUp, stopping all tests");
+		System.out.println("\n>>inside cleanUp, stopping all tests\n");
 	}	
 	
 	@Test

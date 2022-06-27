@@ -1,7 +1,6 @@
 package com.springboot.workspace;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,5 +60,5 @@ public class UserServiceTests {
 		List<User> testUsers = userService.getAllUsers();
 		assertThat(testUsers).hasSize(1);
 	}
-
+	
 }

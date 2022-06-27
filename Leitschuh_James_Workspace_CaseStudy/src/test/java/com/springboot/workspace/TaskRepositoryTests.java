@@ -16,19 +16,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Event;
+import com.JamesLeitschuh.workspace.model.Task;
 import com.JamesLeitschuh.workspace.model.User;
-import com.JamesLeitschuh.workspace.repository.EventRepository;
+import com.JamesLeitschuh.workspace.repository.TaskRepository;
 import com.JamesLeitschuh.workspace.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @Transactional
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
-public class EventRepositoryTests {
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+public class TaskRepositoryTests {
 	
 	@Autowired
-	private EventRepository eventRepo;
+	private TaskRepository taskRepo;
 	
 	@Autowired
 	private UserRepository userRepo;
@@ -41,7 +41,7 @@ public class EventRepositoryTests {
 	
 	@AfterEach
 	public void cleanUp() {
-		System.out.println("\n>>inside cleanUp, stopping all tests\n");
+		System.out.println("\n>>inside cleanUp, end of test\n");
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class EventRepositoryTests {
 	}
 	
 	@Test
-	public void findAllEventsByIdTest() {
+	public void findAllTasksByIdTest() {
 		
 		User user = new User();
 		user.setFirstName("insideTest");
@@ -59,16 +59,16 @@ public class EventRepositoryTests {
 		user.setPassword("insideTest");
 		userRepo.save(user);
 		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
+		Task task = new Task();
+		task.setUser(user);
+		taskRepo.save(task);
 		
-		List<Event> result = eventRepo.findAllEventsById(user.getId());
+		List<Task> result = taskRepo.findAllTasksById(user.getId());
 		assertEquals(result.size(), 1);
 	}
 	
 	@Test
-	public void findAllEventsByIdOrderedTest() {
+	public void findAllIncompleteTasksByIdTest() {
 		
 		User user = new User();
 		user.setFirstName("insideTest");
@@ -77,12 +77,18 @@ public class EventRepositoryTests {
 		user.setPassword("insideTest");
 		userRepo.save(user);
 		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
+		Task task = new Task();
+		task.setUser(user);
+		taskRepo.save(task);
 		
-		List<Event> results = eventRepo.findAllEventsByIdOrdered(user.getId());
-		assertEquals(results.size(), 1);
+		Task task2 = new Task();
+		task2.setUser(user);
+		task2.setCompleted(true);
+		taskRepo.save(task2);
+		
+		List<Task> result = taskRepo.findAllIncompleteTasksById(user.getId());
+		assertEquals(result.size(), 1);
+		
 	}
 
 }

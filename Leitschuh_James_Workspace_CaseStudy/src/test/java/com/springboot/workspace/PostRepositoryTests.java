@@ -16,23 +16,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Event;
+import com.JamesLeitschuh.workspace.model.Post;
 import com.JamesLeitschuh.workspace.model.User;
-import com.JamesLeitschuh.workspace.repository.EventRepository;
+import com.JamesLeitschuh.workspace.repository.PostRepository;
 import com.JamesLeitschuh.workspace.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
-public class EventRepositoryTests {
+public class PostRepositoryTests {
 	
 	@Autowired
-	private EventRepository eventRepo;
+	private PostRepository postRepo;
 	
 	@Autowired
 	private UserRepository userRepo;
-	
 	
 	@BeforeEach
 	public void setUp() {
@@ -50,39 +49,23 @@ public class EventRepositoryTests {
 	}
 	
 	@Test
-	public void findAllEventsByIdTest() {
+	public void findAllPostsOrderedByUserTest() {
 		
 		User user = new User();
 		user.setFirstName("insideTest");
-		user.setLastName("insdieTest");
+		user.setLastName("insideTest");
 		user.setEmail("insideTest");
 		user.setPassword("insideTest");
 		userRepo.save(user);
 		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
+		Post post = new Post();
+		post.setPostName("insideTest");
+		post.setPostDesc("insideTest");
+		post.setUser(user);
+		postRepo.save(post);
 		
-		List<Event> result = eventRepo.findAllEventsById(user.getId());
-		assertEquals(result.size(), 1);
-	}
-	
-	@Test
-	public void findAllEventsByIdOrderedTest() {
-		
-		User user = new User();
-		user.setFirstName("insideTest");
-		user.setLastName("insdieTest");
-		user.setEmail("insideTest");
-		user.setPassword("insideTest");
-		userRepo.save(user);
-		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
-		
-		List<Event> results = eventRepo.findAllEventsByIdOrdered(user.getId());
-		assertEquals(results.size(), 1);
+		List<Post> result = postRepo.findAllPostsOrderedByUser();
+		assertEquals(result.size(), postRepo.findAll().size());
 	}
 
 }

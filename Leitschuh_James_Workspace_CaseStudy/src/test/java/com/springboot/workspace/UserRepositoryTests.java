@@ -1,8 +1,7 @@
 package com.springboot.workspace;
 
 import static org.junit.Assert.assertEquals;
-
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
 import javax.transaction.Transactional;
 
@@ -10,29 +9,26 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.JamesLeitschuh.workspace.LeitschuhJamesWorkspaceCaseStudyApplication;
-import com.JamesLeitschuh.workspace.model.Event;
 import com.JamesLeitschuh.workspace.model.User;
-import com.JamesLeitschuh.workspace.repository.EventRepository;
 import com.JamesLeitschuh.workspace.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @SpringBootTest(classes = LeitschuhJamesWorkspaceCaseStudyApplication.class)
-public class EventRepositoryTests {
-	
-	@Autowired
-	private EventRepository eventRepo;
+public class UserRepositoryTests {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
 	
 	@BeforeEach
 	public void setUp() {
@@ -41,7 +37,7 @@ public class EventRepositoryTests {
 	
 	@AfterEach
 	public void cleanUp() {
-		System.out.println("\n>>inside cleanUp, stopping all tests\n");
+		System.out.println("\n>>inside cleanUp, end of test\n");
 	}
 	
 	@Test
@@ -50,7 +46,7 @@ public class EventRepositoryTests {
 	}
 	
 	@Test
-	public void findAllEventsByIdTest() {
+	public void findByEmailTest() {
 		
 		User user = new User();
 		user.setFirstName("insideTest");
@@ -59,30 +55,20 @@ public class EventRepositoryTests {
 		user.setPassword("insideTest");
 		userRepo.save(user);
 		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
-		
-		List<Event> result = eventRepo.findAllEventsById(user.getId());
-		assertEquals(result.size(), 1);
+		User user2 = userRepo.findByEmail(user.getEmail());
+		assertEquals(user.getId(), user2.getId());
 	}
 	
-	@Test
-	public void findAllEventsByIdOrderedTest() {
-		
-		User user = new User();
-		user.setFirstName("insideTest");
-		user.setLastName("insdieTest");
-		user.setEmail("insideTest");
-		user.setPassword("insideTest");
-		userRepo.save(user);
-		
-		Event event = new Event();
-		event.setUser(user);
-		eventRepo.save(event);
-		
-		List<Event> results = eventRepo.findAllEventsByIdOrdered(user.getId());
-		assertEquals(results.size(), 1);
-	}
+	@ParameterizedTest
+    @ValueSource(strings = {"Hello", "World"})
+    public void saveUserTest(String message) {
+        assertNotNull(message);
+    }
+	
+	@ParameterizedTest
+    @CsvFileSource(resources = "/com/springboot/workspace/test-data.csv")
+    public void saveUserTest(String firstName, String lastName, String Email, String Password, String City) {
+        assertNotNull(firstName);
+    }
 
 }
